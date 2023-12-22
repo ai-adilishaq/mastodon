@@ -824,7 +824,8 @@ body > [data-popper-placement] {
       display: flex;
       flex-direction: column;
       gap: 2px;
-      align-items: flex-start;
+      flex: 1 1 auto;
+      min-width: 0;
 
       &__label {
         flex: 0 0 auto;
@@ -1053,18 +1054,17 @@ body > [data-popper-placement] {
 .reply-indicator {
   display: grid;
   grid-template-columns: 46px minmax(0, 1fr);
-  grid-template-rows: 20px (46px - 20px) max-content max-content (32px - 12px);
-  gap: 0 10px;
+  grid-template-rows: 46px max-content max-content;
+  gap: 10px;
 
-  .account__avatar {
+  .detailed-status__display-name {
     grid-column-start: 1;
+    grid-column-end: span 2;
     grid-row-start: 1;
-    grid-row-end: span 2;
+    margin-bottom: 0;
   }
 
   .display-name {
-    grid-column-start: 2;
-    grid-row-start: 1;
     font-size: 14px;
     line-height: 20px;
 
@@ -1075,7 +1075,7 @@ body > [data-popper-placement] {
 
   &__line {
     grid-column-start: 1;
-    grid-row-start: 3;
+    grid-row-start: 2;
     grid-row-end: span 3;
     position: relative;
 
@@ -1084,29 +1084,29 @@ body > [data-popper-placement] {
       content: '';
       position: absolute;
       inset-inline-start: 50%;
-      top: 4px;
+      top: -6px;
       transform: translateX(-50%);
       background: lighten($ui-base-color, 8%);
       width: 2px;
-      height: calc(100% + 16px - 8px); // Account for gap to next element
+      height: calc(100% + 16px); // Account for gap to next element
     }
   }
 
   &__content {
     grid-column-start: 2;
     grid-row-start: 2;
-    grid-row-end: span 2;
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.25px;
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+    padding: 0;
   }
 
   &__attachments {
     grid-column-start: 2;
-    grid-row-start: 4;
+    grid-row-start: 3;
     color: $darker-text-color;
     font-size: 12px;
     line-height: 16px;
@@ -1114,7 +1114,6 @@ body > [data-popper-placement] {
     display: flex;
     align-items: center;
     gap: 4px;
-    margin-top: 4px;
 
     .icon {
       width: 18px;
@@ -2218,6 +2217,7 @@ a.account__display-name {
     border-bottom: 0;
     padding: 0;
     flex: 1 1 auto;
+    min-width: 0;
   }
 
   .icon-button .icon {

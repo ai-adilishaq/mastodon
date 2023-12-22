@@ -1,6 +1,9 @@
 import { FormattedMessage } from 'react-intl';
 
+import { Link } from 'react-router-dom';
+
 import { useSelector } from 'react-redux';
+
 
 import { ReactComponent as BarChart4BarsIcon } from '@material-symbols/svg-600/outlined/bar_chart_4_bars.svg';
 import { ReactComponent as PhotoLibraryIcon } from '@material-symbols/svg-600/outlined/photo_library.svg';
@@ -24,8 +27,10 @@ export const ReplyIndicator = () => {
     <div className='reply-indicator'>
       <div className='reply-indicator__line' />
 
-      <Avatar account={account} size={46} />
-      <DisplayName account={account} />
+      <Link to={`/@${account.get('acct')}`} className='detailed-status__display-name'>
+        <div className='detailed-status__display-avatar'><Avatar account={account} size={46} /></div>
+        <DisplayName account={account} />
+      </Link>
 
       <div className='reply-indicator__content translate' dangerouslySetInnerHTML={content} />
 
